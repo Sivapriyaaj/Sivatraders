@@ -40,7 +40,8 @@ namespace Sivatraders.Controllers
                         {
                             request.Headers.TryAddWithoutValidation("Authorization", _appconfig.Value.authorization);
 
-                            request.Content = new StringContent("{ \"messaging_product\": \"whatsapp\", \"to\": \"919442154464\", \"type\": \"template\", \"template\": { \"name\": \"welcome_siva_traders\", \"language\": { \"code\": \"en_US\" } } }");
+                            //  request.Content = new StringContent("{ \"messaging_product\": \"whatsapp\", \"to\": \"919442154464\", \"type\": \"template\", \"template\": { \"name\": \"welcome_siva_traders\", \"language\": { \"code\": \"en_US\" } } }");
+                            request.Content = new StringContent("{ \"messaging_product\": \"whatsapp\", \"to\":  \"" + msg.mobilenumber + "\", \"type\": \"template\", \"template\": { \"name\": \"welcome_siva_traders\", \"language\": { \"code\": \"en_US\" } } }");
                             request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
 
                             var response = await httpClient.SendAsync(request);

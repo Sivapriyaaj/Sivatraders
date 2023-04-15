@@ -4,7 +4,7 @@
     {
         public string name { get; set; }
         public string email { get; set; }
-        public int mobilenumber { get; set; }
+        public string mobilenumber { get; set; }
         public string message { get; set; }
     }
 }
