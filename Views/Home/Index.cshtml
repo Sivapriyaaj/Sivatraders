@@ -428,9 +428,13 @@
                            
                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                                 <input class="form-control" id="txtname" placeholder="Your name" type="text" name="Your Name">
+                                <span id="spnname" style="color:red"></span>
                                 <input class="form-control" id="txtemail" placeholder="Email" type="text" name="Email">
+                                 <span id="spnemail" style="color:red"></span>
                                  <input class="form-control" placeholder="Phone" type="text" id="txtphone" name="Phone">
+                                  <span id="spnphone" style="color:red"></span>
                                  <textarea id="txtmsg" class="textarea" placeholder="Message"></textarea>
+                                  <span id="spnmsg" style="color:red"></span>
                                   <button class="send" id="btnsubmit">Send</button>
                            </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
@@ -560,9 +564,59 @@
          });
          });
 
+         
+    function  claerall(){
+         $("#spnname").html('')
+         $("#spnemail").html('') 
+         $("#spnphone").html('')
+         $("#spnphone").html('')
+         $('#spnmsg').css("color", "red");
+    }
           $("#btnsubmit").click(function () {
-           debugger
-        
+           
+            if($("#txtname").val()==""){
+                $("#spnname").html('Please enter message')
+                  return false;
+            }
+          if($("#txtemail").val()==""){
+                $("#spnemail").html('Please enter mail')
+                  return false;
+            }
+              if($("#txtphone").val()==""){
+                $("#spnphone").html('Please enter phone number')
+                  return false;
+            }
+            if($("#txtmsg").val()==""){
+                $("#spnmsg").html('Please enter message')
+                  return false;
+            }
+           
+          
+            var email = document.getElementById("txtemail").value;
+            event.preventDefault()
+            var lblError = document.getElementById("spnemail");
+            lblError.innerHTML = "";
+            var expr = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
+            if (!expr.test(email)) {
+                lblError.innerHTML = "Please enter a valid email id"
+                        return false;
+            }
+              var mobNum = $("#txtphone").val();
+        var filter = /^\d*(?:\.\d{1,2})?$/;
+
+          if (filter.test(mobNum)) {
+            if(mobNum.length!=10){
+             
+             $("#spnphone").html('Please put 10  digit mobile number')
+                return false;
+             } 
+            }
+            else {
+             
+             $("#spnphone").html('Not a valid number mobile number')
+              return false;
+           }
             var msgdata = {};  
             msgdata.name = $("#txtname").val();  
             msgdata.email = $("#txtemail").val();  
@@ -576,15 +630,16 @@
                 data: msgdata,
                 success: function(data) {   
                     if(data=="Success"){ 
-                      $('#msgerror').css("color", "green");
-                        $("#msgerror").html("Message sent successfully.") 
+                      $('#spnmsg').css("color", "white");
+                        $("#spnmsg").html("Message sent successfully.") 
                     }
                     else{
-                         $("#msgerror").html("Message not sent.") 
+                         $("#spnmsg").html("Message not sent.") 
                     }
                   $("#txtname").val("")
-                  $("#txtmail").val("")
-                  $("#txtmsg").val("")   
+                  $("#txtemail").val("")
+                  $("#txtphone").val("")  
+                   $("#txtmsg").val("")   
                 }
             });
         });
