@@ -6,8 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc().AddRazorRuntimeCompilation();
 builder.Services.Configure <APIdata>(builder.Configuration.GetSection("appsettings"));
-
+builder.Services.AddSingleton(typeof(GoogleSheetsHelper));
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

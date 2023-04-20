@@ -9,6 +9,9 @@
   <ItemGroup>
     <PackageReference Include="Google.Apis.Sheets.v4" Version="1.60.0.2979" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.12" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="7.0.0" />
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
   </ItemGroup>
  
   <ItemGroup>
