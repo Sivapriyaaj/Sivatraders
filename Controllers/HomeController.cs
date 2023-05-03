@@ -74,7 +74,7 @@ namespace Sivatraders.Controllers
                 {
                     return Content("fail");
                 }
-            }
+            } 
             return Content("fail");
         }
         public  async Task<string>  Alertmessage()
@@ -88,7 +88,7 @@ namespace Sivatraders.Controllers
                         request.Headers.TryAddWithoutValidation("Authorization", _appconfig.Value.authorization);
 
                         //  request.Content = new StringContent("{ \"messaging_product\": \"whatsapp\", \"to\": \"919442154464\", \"type\": \"template\", \"template\": { \"name\": \"welcome_siva_traders\", \"language\": { \"code\": \"en_US\" } } }");
-                        request.Content = new StringContent("{ \"messaging_product\": \"whatsapp\", \"to\":\"919629823559\", \"type\": \"template\", \"template\": { \"name\": \"contact_alert_siva_traders\", \"language\": { \"code\": \"en_US\" } } }");
+                        request.Content = new StringContent("{ \"messaging_product\": \"whatsapp\", \"to\":\"919738232707\", \"type\": \"template\", \"template\": { \"name\": \"contact_alert_siva_traders\", \"language\": { \"code\": \"en_US\" } } }");
                         request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
 
                         var response = await httpClient.SendAsync(request);
